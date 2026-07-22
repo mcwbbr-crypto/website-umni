@@ -2266,10 +2266,10 @@ main > section:not(.hero):not(.proof-strip) {
 .blog-modal__dialog {
   position: relative;
   z-index: 1;
-  width: min(100%, 880px);
+  width: min(100%, 760px);
   max-height: calc(100vh - 48px);
   overflow: auto;
-  padding: clamp(34px, 5vw, 58px);
+  padding: clamp(30px, 4vw, 44px);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, .14);
   border-radius: 14px;
@@ -2337,33 +2337,33 @@ main > section:not(.hero):not(.proof-strip) {
 }
 
 .blog-modal h2 {
-  max-width: 760px;
+  max-width: 650px;
   margin: 0;
   color: #ffffff;
-  font-size: clamp(30px, 4vw, 48px);
-  line-height: 1.08;
+  font-size: clamp(27px, 3vw, 38px);
+  line-height: 1.12;
 }
 
 .blog-modal__meta {
-  margin: 16px 0 30px;
+  margin: 14px 0 24px;
   color: rgba(255, 255, 255, .58);
   font: 800 13px var(--font-body);
 }
 
 .blog-modal__content {
   display: grid;
-  gap: 16px;
+  gap: 14px;
   color: rgba(255, 255, 255, .78);
   font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.75;
+  font-size: 16px;
+  line-height: 1.68;
   font-weight: 600;
 }
 
 .blog-modal__content h3 {
-  margin: 14px 0 -4px;
+  margin: 12px 0 -3px;
   color: #ffffff;
-  font-size: 24px;
+  font-size: 21px;
   line-height: 1.2;
 }
 
@@ -2854,12 +2854,12 @@ main > section:not(.hero):not(.proof-strip) {
   }
 
   .blog-modal__dialog {
-    padding: 42px 22px 28px;
+    padding: 36px 20px 24px;
     border-radius: 10px;
   }
 
   .blog-modal h2 {
-    font-size: clamp(28px, 8vw, 38px);
+    font-size: clamp(25px, 7vw, 32px);
   }
 
   .blog-modal__content {
