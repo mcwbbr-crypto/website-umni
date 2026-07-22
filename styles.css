@@ -997,8 +997,8 @@ main > section:not(.hero):not(.proof-strip) {
 }
 
 @media (min-width: 1021px) {
-  .performance-ticker {
-    border-bottom: 18px solid #050505;
+  .performance-ticker span {
+    min-height: 76px;
   }
 }
 
