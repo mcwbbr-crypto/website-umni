@@ -10,8 +10,6 @@ const blogCloseButtons = document.querySelectorAll("[data-blog-close]");
 const blogTrack = document.querySelector(".blog-grid");
 const blogPrevButton = document.querySelector("[data-blog-prev]");
 const blogNextButton = document.querySelector("[data-blog-next]");
-const clientCarousel = document.querySelector(".client-carousel__viewport");
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const BLOG_POSTS = [
   {
     "slug": "o-que-e-trafego-pago",
@@ -652,65 +650,6 @@ blogTrack?.addEventListener("pointerdown", startBlogDrag);
 blogTrack?.addEventListener("pointermove", moveBlogDrag);
 blogTrack?.addEventListener("pointerup", endBlogDrag);
 blogTrack?.addEventListener("pointercancel", endBlogDrag);
-
-let clientIsDragging = false;
-let clientDragStartX = 0;
-let clientDragScrollLeft = 0;
-
-function startClientDrag(event) {
-  if (!clientCarousel) return;
-  if (event.pointerType === "mouse" && event.button !== 0) return;
-
-  clientIsDragging = true;
-  clientDragStartX = event.clientX;
-  clientDragScrollLeft = clientCarousel.scrollLeft;
-  clientCarousel.classList.add("is-dragging");
-}
-
-function moveClientDrag(event) {
-  if (!clientCarousel || !clientIsDragging) return;
-
-  const distance = event.clientX - clientDragStartX;
-  if (Math.abs(distance) > 6) event.preventDefault();
-  clientCarousel.scrollLeft = clientDragScrollLeft - distance;
-}
-
-function endClientDrag() {
-  if (!clientCarousel || !clientIsDragging) return;
-
-  clientIsDragging = false;
-  clientCarousel.classList.remove("is-dragging");
-}
-
-clientCarousel?.addEventListener("pointerdown", startClientDrag);
-clientCarousel?.addEventListener("pointermove", moveClientDrag);
-clientCarousel?.addEventListener("pointerup", endClientDrag);
-clientCarousel?.addEventListener("pointercancel", endClientDrag);
-clientCarousel?.addEventListener("dragstart", (event) => event.preventDefault());
-let clientCarouselVisible = false;
-if (clientCarousel && "IntersectionObserver" in window) {
-  const clientCarouselObserver = new IntersectionObserver(([entry]) => {
-    clientCarouselVisible = entry.isIntersecting;
-  }, { rootMargin: "120px" });
-  clientCarouselObserver.observe(clientCarousel);
-} else {
-  clientCarouselVisible = Boolean(clientCarousel);
-}
-
-function animateClientCarousel() {
-  if (clientCarousel && clientCarouselVisible && !prefersReducedMotion && !clientIsDragging && !document.hidden) {
-    const loopPoint = clientCarousel.scrollWidth / 2;
-    clientCarousel.scrollLeft += 0.28;
-
-    if (loopPoint > 0 && clientCarousel.scrollLeft >= loopPoint) {
-      clientCarousel.scrollLeft -= loopPoint;
-    }
-  }
-
-  window.requestAnimationFrame(animateClientCarousel);
-}
-
-window.requestAnimationFrame(animateClientCarousel);
 
 function renderBlogPost(post) {
   if (!blogModal || !post) return;
