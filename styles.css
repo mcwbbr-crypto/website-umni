@@ -649,6 +649,7 @@ main > section:not(.hero):not(.proof-strip) {
   border-radius: var(--radius);
   background: #ffffff;
   box-shadow: 0 18px 50px rgba(0, 0, 0, .06);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 
 .service-featured {
@@ -657,6 +658,49 @@ main > section:not(.hero):not(.proof-strip) {
     linear-gradient(145deg, rgba(254, 233, 8, .18), rgba(255, 255, 255, .04)),
     #080808;
   border-color: rgba(254, 233, 8, .36);
+}
+
+.service-meta {
+  border-color: rgba(8, 102, 255, .58);
+  background:
+    radial-gradient(circle at 8% 4%, rgba(8, 102, 255, .42), transparent 43%),
+    radial-gradient(circle at 96% 100%, rgba(124, 58, 237, .24), transparent 44%),
+    linear-gradient(145deg, #091326, #050609 72%);
+  box-shadow: 0 22px 58px rgba(8, 102, 255, .14);
+}
+
+.service-google {
+  border-color: rgba(66, 133, 244, .52);
+  background:
+    radial-gradient(circle at 7% 4%, rgba(66, 133, 244, .38), transparent 40%),
+    radial-gradient(circle at 96% 8%, rgba(251, 188, 4, .20), transparent 34%),
+    radial-gradient(circle at 90% 100%, rgba(52, 168, 83, .18), transparent 38%),
+    linear-gradient(145deg, #0b111a, #050505 72%);
+  box-shadow: 0 22px 58px rgba(66, 133, 244, .13);
+}
+
+.service-meta .service-icon {
+  border-color: rgba(8, 102, 255, .34);
+  box-shadow: 0 14px 36px rgba(8, 102, 255, .22);
+}
+
+.service-google .service-icon {
+  border-color: rgba(66, 133, 244, .30);
+  box-shadow: 0 14px 36px rgba(66, 133, 244, .18);
+}
+
+@media (hover: hover) {
+  .service-meta:hover {
+    transform: translateY(-4px);
+    border-color: rgba(8, 102, 255, .88);
+    box-shadow: 0 28px 68px rgba(8, 102, 255, .22);
+  }
+
+  .service-google:hover {
+    transform: translateY(-4px);
+    border-color: rgba(66, 133, 244, .82);
+    box-shadow: 0 28px 68px rgba(66, 133, 244, .20);
+  }
 }
 
 .service-icon {
