@@ -592,6 +592,10 @@ main > section:not(.hero):not(.proof-strip) {
   gap: 18px;
 }
 
+.services-grid-primary {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .service-card {
   min-height: 300px;
   padding: 28px;
@@ -668,6 +672,75 @@ main > section:not(.hero):not(.proof-strip) {
 
 .service-featured p {
   color: rgba(255, 255, 255, .72);
+}
+
+.complementary-services {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.5fr);
+  gap: 36px;
+  align-items: center;
+  margin-top: 48px;
+  padding: 32px;
+  border: 1px solid rgba(17, 17, 17, .09);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, .6);
+}
+
+.complementary-services-copy .eyebrow {
+  margin: 0 0 10px;
+  color: #8f8300;
+}
+
+.complementary-services-copy h3 {
+  margin: 0 0 12px;
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1.12;
+}
+
+.complementary-services-copy > p:last-child {
+  margin: 0;
+  color: #626262;
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.complementary-services-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.complementary-services-links a {
+  display: flex;
+  min-height: 112px;
+  padding: 18px;
+  border: 1px solid rgba(17, 17, 17, .08);
+  border-radius: 14px;
+  color: #111;
+  background: #fff;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.complementary-services-links a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(157, 144, 0, .4);
+}
+
+.complementary-services-links strong {
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.complementary-services-links span {
+  margin-top: 7px;
+  color: #666;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 600;
 }
 
 .about-section {
@@ -2304,6 +2377,15 @@ main > section:not(.hero):not(.proof-strip) {
     grid-template-columns: 1fr;
   }
 
+  .complementary-services {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .complementary-services-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .service-featured {
     grid-column: auto;
   }
@@ -2480,6 +2562,19 @@ main > section:not(.hero):not(.proof-strip) {
   .footer-grid,
   .cta-box form {
     grid-template-columns: 1fr;
+  }
+
+  .complementary-services {
+    margin-top: 32px;
+    padding: 22px;
+  }
+
+  .complementary-services-links {
+    grid-template-columns: 1fr;
+  }
+
+  .complementary-services-links a {
+    min-height: auto;
   }
 
   .footer {
