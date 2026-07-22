@@ -2340,7 +2340,7 @@ main > section:not(.hero):not(.proof-strip) {
   max-width: 650px;
   margin: 0;
   color: #ffffff;
-  font-size: clamp(27px, 3vw, 38px);
+  font-size: clamp(24px, 2.5vw, 30px);
   line-height: 1.12;
 }
 
@@ -2861,7 +2861,7 @@ main > section:not(.hero):not(.proof-strip) {
   }
 
   .blog-modal h2 {
-    font-size: clamp(23px, 6.5vw, 29px);
+    font-size: clamp(21px, 5.8vw, 25px);
   }
 
   .blog-modal__content {
