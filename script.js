@@ -700,7 +700,7 @@ if (clientCarousel && "IntersectionObserver" in window) {
 function animateClientCarousel() {
   if (clientCarousel && clientCarouselVisible && !prefersReducedMotion && !clientIsDragging && !document.hidden) {
     const loopPoint = clientCarousel.scrollWidth / 2;
-    clientCarousel.scrollLeft += 0.45;
+    clientCarousel.scrollLeft += 0.28;
 
     if (loopPoint > 0 && clientCarousel.scrollLeft >= loopPoint) {
       clientCarousel.scrollLeft -= loopPoint;
