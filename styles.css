@@ -162,8 +162,8 @@ main > section:not(.hero):not(.proof-strip) {
 
 .hero {
   position: relative;
-  min-height: 720px;
-  padding: 112px 0 52px;
+  min-height: calc(100svh - 58px);
+  padding: 126px 0 58px;
   color: #ffffff;
   background: #050505;
   overflow: hidden;
@@ -243,10 +243,10 @@ main > section:not(.hero):not(.proof-strip) {
   position: relative;
   z-index: 3;
   display: grid;
-  grid-template-columns: minmax(0, 680px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 580px) minmax(0, 1fr);
   grid-template-rows: auto auto;
-  min-height: 550px;
-  gap: 30px clamp(28px, 4vw, 58px);
+  min-height: 575px;
+  gap: 34px clamp(46px, 6vw, 84px);
   align-items: center;
 }
 
@@ -270,15 +270,15 @@ main > section:not(.hero):not(.proof-strip) {
 
 .hero h1 {
   margin: 0;
-  max-width: 680px;
-  font-size: clamp(42px, 3.8vw, 56px);
-  line-height: 1.04;
+  max-width: 560px;
+  font-size: clamp(42px, 4.8vw, 66px);
+  line-height: 1;
   letter-spacing: 0;
 }
 
 .hero-text {
-  max-width: 590px;
-  margin: 24px 0 30px;
+  max-width: 500px;
+  margin: 26px 0 34px;
   color: rgba(255, 255, 255, .78);
   font-family: var(--font-body);
   font-size: 18px;
