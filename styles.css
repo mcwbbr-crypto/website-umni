@@ -442,7 +442,7 @@ main > section:not(.hero):not(.proof-strip) {
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: performance-ticker-scroll 45s linear infinite;
+  animation: performance-ticker-scroll 70s linear infinite;
 }
 
 .performance-ticker__group {
