@@ -30,6 +30,18 @@ body {
   overflow-x: hidden;
 }
 
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 body.menu-open {
   overflow: hidden;
 }
@@ -265,7 +277,7 @@ main > section:not(.hero):not(.proof-strip) {
 }
 
 .eyebrow.dark {
-  color: #9d9000;
+  color: #6f6600;
 }
 
 .hero h1 {
@@ -617,7 +629,7 @@ main > section:not(.hero):not(.proof-strip) {
 
 .section-heading > p:not(.section-lead) {
   margin: 0 0 12px;
-  color: #9d9000;
+  color: #6f6600;
   text-transform: uppercase;
   letter-spacing: 0;
   font-size: 12px;
@@ -844,7 +856,7 @@ main > section:not(.hero):not(.proof-strip) {
 
 .complementary-services-copy .eyebrow {
   margin: 0 0 10px;
-  color: #8f8300;
+  color: #6f6600;
 }
 
 .complementary-services-copy h3 {
@@ -1120,7 +1132,7 @@ main > section:not(.hero):not(.proof-strip) {
 }
 
 .section-heading.invert > p:not(.section-lead) {
-  color: #9d9000;
+  color: #6f6600;
 }
 
 .process-grid {
@@ -1474,7 +1486,7 @@ main > section:not(.hero):not(.proof-strip) {
 }
 
 .blog-card__tag {
-  color: #9d9000;
+  color: #6f6600;
   text-transform: uppercase;
   letter-spacing: 0;
   font-size: 11px;

@@ -512,6 +512,7 @@ window.addEventListener("keydown", (event) => {
 });
 
 function openAnalysisModal() {
+  if (analysisModal) analysisModal.inert = false;
   analysisModal?.classList.add("is-open");
   analysisModal?.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
@@ -521,6 +522,7 @@ function openAnalysisModal() {
 function closeAnalysisModal() {
   analysisModal?.classList.remove("is-open");
   analysisModal?.setAttribute("aria-hidden", "true");
+  if (analysisModal) analysisModal.inert = true;
   if (!blogModal?.classList.contains("is-open")) {
     document.body.classList.remove("modal-open");
   }
@@ -695,6 +697,7 @@ function openBlogModal(slug) {
   const post = BLOG_POSTS.find((item) => item.slug === slug);
   if (!post) return;
 
+  if (blogModal) blogModal.inert = false;
   renderBlogPost(post);
   blogModal?.classList.add("is-open");
   blogModal?.setAttribute("aria-hidden", "false");
@@ -705,6 +708,7 @@ function openBlogModal(slug) {
 function closeBlogModal() {
   blogModal?.classList.remove("is-open");
   blogModal?.setAttribute("aria-hidden", "true");
+  if (blogModal) blogModal.inert = true;
   if (!analysisModal?.classList.contains("is-open")) {
     document.body.classList.remove("modal-open");
   }

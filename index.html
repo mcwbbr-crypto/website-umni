@@ -474,11 +474,15 @@
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_next" value="https://umni.com.br/?enviado=1" />
             <input type="hidden" name="Origem" value="Formulário da seção de contato" />
-            <input id="cta-name" name="Nome" type="text" placeholder="Nome*" required />
-            <input id="cta-phone" name="WhatsApp" type="tel" placeholder="WhatsApp*" required />
-            <input id="cta-email" name="E-mail" type="email" placeholder="E-mail*" required />
+            <label class="sr-only" for="cta-name">Nome</label>
+            <input id="cta-name" name="Nome" type="text" placeholder="Nome*" autocomplete="name" required />
+            <label class="sr-only" for="cta-phone">WhatsApp</label>
+            <input id="cta-phone" name="WhatsApp" type="tel" placeholder="WhatsApp*" autocomplete="tel" required />
+            <label class="sr-only" for="cta-email">E-mail</label>
+            <input id="cta-email" name="E-mail" type="email" placeholder="E-mail*" autocomplete="email" required />
+            <label class="sr-only" for="cta-challenge">Qual é o seu principal desafio?</label>
             <select id="cta-challenge" name="Principal desafio" required>
-              <option value="">Qual seu principal desafio?</option>
+              <option value="" disabled selected>Qual seu principal desafio?</option>
               <option>Gerar mais leads</option>
               <option>Vender mais pelo site</option>
               <option>Melhorar campanhas atuais</option>
@@ -563,7 +567,7 @@
       </div>
     </footer>
 
-    <div class="analysis-modal" id="analysis-modal" aria-hidden="true">
+    <div class="analysis-modal" id="analysis-modal" aria-hidden="true" inert>
       <div class="analysis-modal__overlay" data-analysis-close></div>
       <section class="analysis-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="analysis-modal-title">
         <button class="analysis-modal__close" type="button" aria-label="Fechar formulário" data-analysis-close>
@@ -639,9 +643,9 @@
     </div>
 
 
-    <div class="blog-modal" id="blog-modal" aria-hidden="true">
+    <div class="blog-modal" id="blog-modal" aria-hidden="true" inert>
       <div class="blog-modal__overlay" data-blog-close></div>
-      <article class="blog-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="blog-modal-title">
+      <div class="blog-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="blog-modal-title">
         <button class="blog-modal__close" type="button" aria-label="Fechar leitura" data-blog-close>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M18 6 6 18M6 6l12 12" />
@@ -651,7 +655,7 @@
         <h2 id="blog-modal-title"></h2>
         <div class="blog-modal__meta"></div>
         <div class="blog-modal__content"></div>
-      </article>
+      </div>
     </div>
 
     <button class="back-to-top" type="button" aria-label="Voltar ao topo">
