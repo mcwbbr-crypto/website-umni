@@ -338,41 +338,6 @@ main > section:not(.hero):not(.proof-strip) {
   transform: translateX(1px);
 }
 
-.hero-panel {
-  grid-column: 1;
-  justify-self: start;
-  width: min(100%, 540px);
-  margin-top: 34px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  padding: 1px;
-  border: 1px solid rgba(254, 233, 8, .22);
-  background: rgba(255, 255, 255, .12);
-  backdrop-filter: blur(16px);
-}
-
-.hero-panel div {
-  min-height: 112px;
-  padding: 22px;
-  background: rgba(5, 5, 5, .72);
-}
-
-.hero-panel span {
-  display: block;
-  color: rgba(255, 255, 255, .62);
-  font-family: var(--font-body);
-  font-size: 12px;
-  line-height: 1.45;
-}
-
-.hero-panel strong {
-  display: block;
-  margin-top: 12px;
-  color: var(--yellow);
-  font-size: 25px;
-}
-
 .client-carousel {
   width: 100%;
   margin-top: 0;
@@ -463,53 +428,56 @@ main > section:not(.hero):not(.proof-strip) {
   filter: none;
 }
 
-.hero-service-pills {
-  grid-column: 2;
-  grid-row: 2;
-  align-self: end;
-  justify-self: end;
+.performance-ticker {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  overflow: hidden;
+  color: #050505;
+  background: var(--yellow);
+  border-block: 1px solid rgba(5, 5, 5, .14);
+}
+
+.performance-ticker__track {
   display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  max-width: 620px;
-  margin: 0 0 44px;
+  width: max-content;
+  will-change: transform;
+  animation: performance-ticker-scroll 30s linear infinite;
 }
 
-.hero-pill {
-  min-height: 58px;
-  display: inline-flex;
+.performance-ticker__group {
+  display: flex;
+  flex: none;
   align-items: center;
-  gap: 12px;
-  padding: 0 22px;
-  color: #ffffff;
-  border: 1px solid rgba(254, 233, 8, .34);
-  border-radius: 18px;
-  background: rgba(5, 5, 5, .58);
-  box-shadow: none;
-  backdrop-filter: blur(16px);
-  font-size: 15px;
+}
+
+.performance-ticker span {
+  display: inline-flex;
+  min-height: 58px;
+  align-items: center;
+  white-space: nowrap;
+  padding: 0 clamp(30px, 3.5vw, 68px);
+  font-size: 12px;
   font-weight: 900;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, .58);
-  transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+  letter-spacing: .14em;
+  text-transform: uppercase;
 }
 
-.hero-pill:hover {
-  transform: translateY(-2px);
-  border-color: var(--yellow);
-  background: rgba(254, 233, 8, .12);
-  box-shadow: none;
+.performance-ticker span::after {
+  content: "✦";
+  margin-left: clamp(30px, 3.5vw, 68px);
+  font-size: 11px;
 }
 
-.hero-pill svg {
-  width: 30px;
-  height: 30px;
-  color: var(--yellow);
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 3.35;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: none;
+@keyframes performance-ticker-scroll {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .performance-ticker__track {
+    animation: none;
+    transform: none;
+  }
 }
 
 .proof-strip {
@@ -2334,15 +2302,9 @@ main > section:not(.hero):not(.proof-strip) {
     grid-template-columns: 1fr;
   }
 
-  .hero-copy,
-  .hero-panel {
+  .hero-copy {
     grid-column: auto;
     grid-row: auto;
-  }
-
-  .hero-panel {
-    justify-self: stretch;
-    grid-column: auto;
   }
 
   .client-carousel {
@@ -2520,24 +2482,6 @@ main > section:not(.hero):not(.proof-strip) {
     font-size: 16px;
   }
 
-  .hero-panel {
-    grid-template-columns: 1fr;
-    width: min(100%, 330px);
-    justify-self: start;
-  }
-
-  .hero-service-pills {
-    grid-column: auto;
-    grid-row: auto;
-    justify-self: start;
-    margin: 0;
-  }
-
-  .hero-panel div {
-    min-height: 86px;
-    padding: 18px 20px;
-  }
-
   .client-carousel {
     width: 100%;
   }
@@ -2559,16 +2503,14 @@ main > section:not(.hero):not(.proof-strip) {
     height: 100%;
   }
 
-  .hero-pill {
-    min-height: 50px;
-    padding: 0 16px;
-    border-radius: 14px;
-    font-size: 13px;
+  .performance-ticker span {
+    min-height: 52px;
+    padding-inline: 26px;
+    font-size: 11px;
   }
 
-  .hero-pill svg {
-    width: 23px;
-    height: 23px;
+  .performance-ticker span::after {
+    margin-left: 26px;
   }
 
   .services-grid,
