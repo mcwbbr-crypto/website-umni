@@ -11,7 +11,6 @@ const blogTrack = document.querySelector(".blog-grid");
 const blogPrevButton = document.querySelector("[data-blog-prev]");
 const blogNextButton = document.querySelector("[data-blog-next]");
 const clientCarousel = document.querySelector(".client-carousel__viewport");
-const faqQuestions = document.querySelectorAll(".faq-question");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const BLOG_POSTS = [
   {
@@ -508,14 +507,6 @@ menuLinks.forEach((link) => {
   link.addEventListener("click", closeMenu);
 });
 
-faqQuestions.forEach((question) => {
-  question.addEventListener("click", () => {
-    const item = question.closest(".faq-item");
-    const isOpen = item?.classList.toggle("is-open");
-    question.setAttribute("aria-expanded", String(Boolean(isOpen)));
-  });
-});
-
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeMenu();
   if (event.key === "Escape") closeAnalysisModal();
@@ -709,7 +700,7 @@ if (clientCarousel && "IntersectionObserver" in window) {
 function animateClientCarousel() {
   if (clientCarousel && clientCarouselVisible && !prefersReducedMotion && !clientIsDragging && !document.hidden) {
     const loopPoint = clientCarousel.scrollWidth / 2;
-    clientCarousel.scrollLeft += 0.95;
+    clientCarousel.scrollLeft += 0.45;
 
     if (loopPoint > 0 && clientCarousel.scrollLeft >= loopPoint) {
       clientCarousel.scrollLeft -= loopPoint;
