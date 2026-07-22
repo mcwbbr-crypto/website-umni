@@ -2625,7 +2625,7 @@ main > section:not(.hero):not(.proof-strip) {
   }
 
   .brand img {
-    width: 162px;
+    width: 148px;
   }
 
   .header-cta {
@@ -2633,8 +2633,8 @@ main > section:not(.hero):not(.proof-strip) {
   }
 
   .menu-toggle {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     display: grid;
     place-items: center;
     border: 1px solid rgba(254, 233, 8, .82);
@@ -2692,7 +2692,7 @@ main > section:not(.hero):not(.proof-strip) {
 
   .hero {
     min-height: auto;
-    padding: 112px 0 46px;
+    padding: 104px 0 38px;
   }
 
   .hero-bg {
@@ -2700,18 +2700,39 @@ main > section:not(.hero):not(.proof-strip) {
   }
 
   .hero-media {
-    inset: 58px -28% auto auto;
-    width: 128%;
-    height: 470px;
-    opacity: .44;
+    inset: 74px 0 auto;
+    width: 100%;
+    height: 430px;
+    opacity: .38;
+  }
+
+  .hero-media img {
+    object-position: 62% center;
   }
 
   .hero h1 {
-    font-size: clamp(38px, 11.5vw, 54px);
+    max-width: 100%;
+    font-size: clamp(35px, 10.5vw, 44px);
+    line-height: 1.03;
   }
 
   .hero-text {
+    max-width: 100%;
+    margin: 22px 0 26px;
     font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: min(100%, 250px);
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .client-carousel {
@@ -2800,7 +2821,27 @@ main > section:not(.hero):not(.proof-strip) {
   }
 
   .section {
-    padding: 72px 0;
+    padding: 64px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 30px;
+  }
+
+  .section-heading h2,
+  .about-copy h2,
+  .people-grid h2,
+  .cta-box h2 {
+    font-size: clamp(28px, 8.5vw, 36px);
+  }
+
+  .services-grid {
+    gap: 16px;
+  }
+
+  .service-card {
+    min-height: auto;
+    padding: 24px;
   }
 
   .about-media {
@@ -2886,6 +2927,10 @@ main > section:not(.hero):not(.proof-strip) {
     max-height: 80vh;
     padding: 32px 18px 22px;
     border-radius: 10px;
+  }
+
+  .blog-modal__close {
+    margin: -18px 0 8px 12px;
   }
 
   .blog-modal h2 {
