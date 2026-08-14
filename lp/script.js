@@ -104,6 +104,20 @@ function validateCurrentStep() {
       return false;
     }
   }
+
+  // Filtro comercial: a BR Metais só cota cargas a partir de 100 kg.
+  if (currentStep === 2) {
+    const quantityField = qualificationForm?.elements?.quantidade;
+    const minimumWarning = document.querySelector('#minimum-warning');
+    const belowMinimum = quantityField?.value === 'Menos de 100 kg';
+
+    if (minimumWarning) minimumWarning.hidden = !belowMinimum;
+    if (belowMinimum) {
+      quantityField?.focus();
+      return false;
+    }
+  }
+
   return true;
 }
 
@@ -115,6 +129,11 @@ document.querySelectorAll('.js-next-step').forEach(btn => btn.addEventListener('
 document.querySelectorAll('.js-prev-step').forEach(btn => btn.addEventListener('click', () => {
   updateQualificationStep(currentStep - 1);
 }));
+
+qualificationForm?.elements?.quantidade?.addEventListener('change', e => {
+  const minimumWarning = document.querySelector('#minimum-warning');
+  if (minimumWarning) minimumWarning.hidden = e.target.value !== 'Menos de 100 kg';
+});
 
 qualificationForm?.addEventListener('submit', e => {
   e.preventDefault();
@@ -130,12 +149,21 @@ qualificationForm?.addEventListener('submit', e => {
 
   const data = Object.fromEntries(new FormData(qualificationForm).entries());
 
+  // Segurança adicional: nunca registra conversão nem abre WhatsApp abaixo do volume mínimo.
+  if (data.quantidade === 'Menos de 100 kg') {
+    leadSubmissionInProgress = false;
+    updateQualificationStep(2);
+    const minimumWarning = document.querySelector('#minimum-warning');
+    if (minimumWarning) minimumWarning.hidden = false;
+    return;
+  }
+
   // Pontuação simples para priorização comercial.
   let score = 0;
   if (data.perfil === 'Empresa') score += 2;
   if (['500 kg a 1 tonelada','1 a 5 toneladas','Mais de 5 toneladas'].includes(data.quantidade)) score += 3;
   else if (data.quantidade === '200 a 500 kg') score += 2;
-  else score += 1;
+  else if (data.quantidade === '100 a 200 kg') score += 1;
   if (data.prazo === 'O quanto antes') score += 2;
   else if (data.prazo === 'Nos próximos 7 dias') score += 1;
   if (data.coleta === 'Sim, preciso de retirada') score += 1;
