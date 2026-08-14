@@ -1,4 +1,4 @@
-const header = document.querySelector('.site-header');
+const header = document.querySelector('.lp-header');
 
 function syncHeaderOnScroll() {
   if (!header) return;
@@ -50,7 +50,7 @@ function reportGoogleAdsConversion(url) {
   const goToWhatsApp = () => {
     if (redirected) return;
     redirected = true;
-    window.location.href = url;
+    window.location.assign(url);
   };
 
   if (typeof window.gtag === 'function') {
@@ -58,13 +58,14 @@ function reportGoogleAdsConversion(url) {
       'send_to': 'AW-16765389428/QImGCNX2s-EcEPSUrro-',
       'value': 1.0,
       'currency': 'BRL',
-      'event_callback': goToWhatsApp
+      'event_callback': goToWhatsApp,
+      'event_timeout': 2000
     });
 
-    // Fallback para não deixar o usuário preso caso o callback do Google não retorne.
-    setTimeout(goToWhatsApp, 2000);
+    // Fallback para não bloquear o atendimento caso o callback não retorne.
+    window.setTimeout(goToWhatsApp, 2200);
   } else {
-    // Se a tag do Google não carregar, o WhatsApp continua funcionando.
+    // Se a tag for bloqueada ou não carregar, o WhatsApp continua funcionando.
     goToWhatsApp();
   }
 }
@@ -150,11 +151,14 @@ qualificationForm?.addEventListener('submit', e => {
     `;
   }
 
-  steps.forEach(el => el.classList.remove('is-active'));
-  const success = qualificationForm.querySelector('.qualification-success');
-  if (success) success.hidden = false;
+  const submitButton = qualificationForm.querySelector('button[type="submit"]');
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.dataset.originalText = submitButton.innerHTML;
+    submitButton.textContent = 'Abrindo WhatsApp…';
+  }
   if (progressBar) progressBar.style.width = '100%';
-  if (stepLabel) stepLabel.textContent = 'Concluído';
+  if (stepLabel) stepLabel.textContent = 'Cotação pronta';
 
   // Monta a mensagem já qualificada e abre o WhatsApp da BR Metais.
   const whatsappNumber = '554136040031';
@@ -184,16 +188,14 @@ qualificationForm?.addEventListener('submit', e => {
 
   console.log('Lead qualificado:', { ...data, score, classificacao });
 
-  // Mostra brevemente a confirmação, registra o lead e dispara a conversão do Google Ads.
-  setTimeout(() => {
-    trackEvent('whatsapp_qualified_lead', {
-      material: data.material,
-      quantidade: data.quantidade,
-      perfil: data.perfil
-    });
+  // O formulário já foi validado: registra o lead e dispara a conversão do Google Ads.
+  trackEvent('whatsapp_qualified_lead', {
+    material: data.material,
+    quantidade: data.quantidade,
+    perfil: data.perfil
+  });
 
-    reportGoogleAdsConversion(whatsappUrl);
-  }, 650);
+  reportGoogleAdsConversion(whatsappUrl);
 });
 
 
