@@ -741,3 +741,42 @@ backToTopButton?.addEventListener("click", () => {
 
 window.addEventListener("scroll", updateBackToTopButton, { passive: true });
 updateBackToTopButton();
+
+
+// Carrossel de prova social: 3 depoimentos visíveis e rotação lenta.
+const testimonialGrid = document.querySelector(".testimonials-grid");
+const testimonialCards = [...document.querySelectorAll(".testimonial-card")];
+const testimonialDots = [...document.querySelectorAll("[data-testimonial-dot]")];
+let testimonialIndex = 0;
+let testimonialTimer;
+
+function showTestimonial(index) {
+  if (!testimonialCards.length) return;
+  testimonialIndex = (index + testimonialCards.length) % testimonialCards.length;
+
+  // Mantém os três cards na tela, apenas alternando suavemente a ordem.
+  if (testimonialCards.length > 1) {
+    const ordered = testimonialCards.map((_, i) => testimonialCards[(i + testimonialIndex) % testimonialCards.length]);
+    ordered.forEach((card) => testimonialGrid?.appendChild(card));
+  }
+
+  testimonialDots.forEach((dot, i) => {
+    dot.classList.toggle("is-active", i === testimonialIndex);
+    dot.setAttribute("aria-current", i === testimonialIndex ? "true" : "false");
+  });
+}
+
+function startTestimonialCarousel() {
+  clearInterval(testimonialTimer);
+  testimonialTimer = setInterval(() => showTestimonial(testimonialIndex + 1), 9000);
+}
+
+testimonialDots.forEach((dot) => {
+  dot.addEventListener("click", () => {
+    showTestimonial(Number(dot.dataset.testimonialDot));
+    startTestimonialCarousel();
+  });
+});
+
+showTestimonial(0);
+startTestimonialCarousel();
