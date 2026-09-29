@@ -10,6 +10,8 @@ const blogCloseButtons = document.querySelectorAll("[data-blog-close]");
 const blogTrack = document.querySelector(".blog-grid");
 const blogPrevButton = document.querySelector("[data-blog-prev]");
 const blogNextButton = document.querySelector("[data-blog-next]");
+let lastAnalysisTrigger = null;
+let lastBlogTrigger = null;
 const BLOG_POSTS = [
   {
     "slug": "o-que-e-trafego-pago",
@@ -512,17 +514,20 @@ window.addEventListener("keydown", (event) => {
 });
 
 function openAnalysisModal() {
+  lastAnalysisTrigger = document.activeElement;
   if (analysisModal) analysisModal.inert = false;
   analysisModal?.classList.add("is-open");
   analysisModal?.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
-  analysisModal?.querySelector(".analysis-form input, .analysis-form select, .analysis-form textarea")?.focus();
+  analysisModal?.querySelector(".analysis-form input:not([type=hidden]), .analysis-form select, .analysis-form textarea")?.focus();
 }
 
 function closeAnalysisModal() {
+  const wasOpen = analysisModal?.classList.contains("is-open");
   analysisModal?.classList.remove("is-open");
   analysisModal?.setAttribute("aria-hidden", "true");
   if (analysisModal) analysisModal.inert = true;
+  if (wasOpen) lastAnalysisTrigger?.focus();
   if (!blogModal?.classList.contains("is-open")) {
     document.body.classList.remove("modal-open");
   }
@@ -573,6 +578,10 @@ directForms.forEach((form) => {
       });
 
       if (!response.ok) throw new Error("Falha no envio");
+      const result = await response.json();
+      if (result.success !== true && result.success !== "true") {
+        throw new Error("Envio não confirmado pelo serviço");
+      }
 
       form.reset();
       if (submitLabel) submitLabel.textContent = "Enviado";
@@ -697,6 +706,7 @@ function openBlogModal(slug) {
   const post = BLOG_POSTS.find((item) => item.slug === slug);
   if (!post) return;
 
+  lastBlogTrigger = document.activeElement;
   if (blogModal) blogModal.inert = false;
   renderBlogPost(post);
   blogModal?.classList.add("is-open");
@@ -706,9 +716,11 @@ function openBlogModal(slug) {
 }
 
 function closeBlogModal() {
+  const wasOpen = blogModal?.classList.contains("is-open");
   blogModal?.classList.remove("is-open");
   blogModal?.setAttribute("aria-hidden", "true");
   if (blogModal) blogModal.inert = true;
+  if (wasOpen) lastBlogTrigger?.focus();
   if (!analysisModal?.classList.contains("is-open")) {
     document.body.classList.remove("modal-open");
   }
@@ -780,3 +792,19 @@ testimonialDots.forEach((dot) => {
 
 showTestimonial(0);
 startTestimonialCarousel();
+
+// Keep keyboard navigation inside the active dialog.
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Tab") return;
+  const modal = document.querySelector(".analysis-modal.is-open, .blog-modal.is-open");
+  if (!modal) return;
+  const focusable = [...modal.querySelectorAll('a[href], button:not([disabled]), input:not([type="hidden"]):not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex="0"]')].filter((item) => item.getClientRects().length);
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (!first) return;
+  if (event.shiftKey && (document.activeElement === first || !modal.contains(document.activeElement))) {
+    event.preventDefault(); last.focus();
+  } else if (!event.shiftKey && (document.activeElement === last || !modal.contains(document.activeElement))) {
+    event.preventDefault(); first.focus();
+  }
+});

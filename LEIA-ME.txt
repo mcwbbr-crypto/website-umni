@@ -1,0 +1,92 @@
+UMNI DIGITAL — SITE ATUALIZADO EM 29/09/2026
+
+ATUALIZAÇÃO DA ABERTURA
+
+Incluída abaixo dos botões a frase: "Várias empresas confiam no nosso serviço,
+faça parte você também." O bloco exibe três logos de clientes em círculos
+sobrepostos, seguindo a referência enviada: BR Metais, Pedro Manoel Advocacia
+e Colégio Cidadão do Amanhã. Em telas pequenas, a frase fica abaixo dos logos.
+
+COMO PUBLICAR
+
+1. Extraia o ZIP.
+2. Envie os arquivos extraídos para a pasta pública do site na sua hospedagem,
+   substituindo os arquivos correspondentes. O index.html deve ficar na raiz
+   pública. Mantenha a pasta assets ao lado dele.
+3. Se usar a Vercel, publique o conteúdo na configuração do projeto existente.
+   Este site usa HTML, CSS e JavaScript estáticos, sem etapa de compilação.
+4. Limpe o cache da hospedagem/CDN e recarregue a página.
+5. Confirme o recebimento dos formulários e o destino do WhatsApp em produção.
+6. No Google Search Console, envie novamente https://umni.com.br/sitemap.xml
+   e solicite a indexação da página inicial. O arquivo de verificação foi mantido.
+
+O domínio usado nas URLs canônicas e no sitemap é https://umni.com.br/.
+Esta entrega contém os arquivos atualizados; não houve publicação em produção.
+
+ALTERAÇÕES VISUAIS
+
+- Amarelo principal suave: #E6D58A. Amarelo secundário: #D4BF72.
+- Ajuste dos tons de amarelo em fundos, bordas, detalhes e estados de interação.
+- Saturação reduzida por CSS no logotipo exibido e nas ilustrações de serviços.
+- Botões Falar no WhatsApp do cabeçalho e da abertura em branco.
+- Botão Solicitar análise da abertura em branco.
+- Faixa animada abaixo da abertura em branco.
+- Estados de foco para teclado e navegação do formulário em modal ajustados.
+
+LINKS E NAVEGAÇÃO
+
+- Removidos seis links de serviços que apontavam para páginas ausentes do pacote.
+- Os três serviços complementares continuam como conteúdo informativo.
+- Removidos links Home redundantes; o logotipo continua levando ao início.
+- Removida a faixa de links SEO para páginas ausentes no rodapé.
+- Mantidos os links úteis de contato, redes sociais, certificação e navegação.
+- Acrescentados acessos de rodapé ao atendimento local e às perguntas frequentes.
+- Corrigido o retorno do formulário que apontava para /analise/, ausente no pacote.
+- O sitemap lista somente a página existente; 17 URLs sem arquivos foram retiradas.
+
+SEO LOCAL, GEO E AEO
+
+- Título, descrição, H1 e texto principal voltados a Curitiba e região metropolitana.
+- Metadados de compartilhamento, idioma, URL canônica e instruções de indexação.
+- Seção de atendimento com exemplos de cidades da região metropolitana.
+- Oito perguntas e respostas em HTML, acessíveis também sem JavaScript.
+- Dados estruturados JSON-LD: LocalBusiness, WebSite, WebPage, serviços e FAQPage.
+- As respostas estruturadas correspondem exatamente às respostas visíveis.
+- Telefone, e-mail e endereço mantidos conforme os dados do arquivo original.
+- Não foram inventados preços, coordenadas, avaliações ou números de resultados.
+- A alegação sem contexto de +38% na faixa foi substituída pelo atendimento local.
+- robots.txt e sitemap.xml atualizados.
+
+SEO, GEO e AEO se apoiam em conteúdo útil, respostas claras, consistência dos dados
+e acesso dos mecanismos de busca. As alterações não garantem posições no Google,
+exibição especial de FAQs ou citações em respostas de IA. Não foi criado um arquivo
+llms.txt: ele não é exigido pelo Google para suas experiências de busca com IA.
+
+VALIDAÇÃO
+
+- Referências locais de links, imagens, scripts e estilos verificadas.
+- Nenhum destino local inexistente ou identificador duplicado detectado.
+- JSON-LD e XML do sitemap analisados; FAQs visíveis e estruturadas comparadas.
+- Sintaxe do JavaScript verificada com node --check.
+- Relação entre os nove cards do blog e seus conteúdos verificada.
+- Formulários, Meta Pixel e verificações de domínio preservados.
+- O formulário agora verifica a confirmação de sucesso retornada pelo serviço.
+- Nenhuma mensagem de formulário foi enviada durante a verificação.
+
+A prévia visual foi bloqueada pelo navegador do ambiente. O layout não pôde ser
+validado visualmente em desktop e celular. Revise a página nos dois formatos após
+publicar, principalmente os formulários, o menu e os botões do topo.
+
+Se as URLs removidas do sitemap existirem na hospedagem atual ou já tiverem acessos,
+avalie seu conteúdo antes de excluir páginas: este pacote não continha esses arquivos.
+
+REFERÊNCIAS TÉCNICAS
+
+Google — Recursos de IA e seu site:
+https://developers.google.com/search/docs/appearance/ai-features
+
+Google — Dados estruturados de empresas locais:
+https://developers.google.com/search/docs/appearance/structured-data/local-business
+
+Google — Diretrizes de dados estruturados:
+https://developers.google.com/search/docs/appearance/structured-data/sd-policies
