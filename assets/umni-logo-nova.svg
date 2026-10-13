@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="190" viewBox="0 0 760 190" role="img" aria-label="UD | Umni Digital">
+<path fill="#fff" d="M20 20h38v80c0 24 12 39 34 39s34-15 34-39V20h38v82c0 47-29 75-72 75S20 149 20 102z"/>
+<path fill="#ffcd05" d="M176 20h58c50 0 81 33 81 78 0 46-31 79-81 79h-62l24-36h38c27 0 43-18 43-43s-16-42-43-42h-58z"/>
+<circle cx="209" cy="98" r="13" fill="#ffcd05"/>
+<path d="M349 26v143" stroke="#b5b5b5" stroke-width="2"/>
+<text x="532" y="98" text-anchor="middle" fill="#fff" font-family="DM Sans,Arial,sans-serif" font-size="57" font-weight="300" letter-spacing="-2">Umni Digital</text>
+<text x="532" y="129" text-anchor="middle" fill="#c7c7c7" font-family="DM Sans,Arial,sans-serif" font-size="17" font-weight="300">A New and Infinite World in Digital</text>
+</svg>
